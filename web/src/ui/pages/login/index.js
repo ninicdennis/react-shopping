@@ -30,7 +30,9 @@ class Login extends Component {
     this.setState({ password: event.target.value })
   }
 
-  handleClick = () => {
+  handleSubmit = () => {
+    event.preventDefault()
+    console.log("Submit")
     const { email, password } = this.state
     this.props.loginProcess(email, password)
   }
@@ -42,12 +44,12 @@ class Login extends Component {
         <div styleName="description"> Sign in with your information below</div>
         {this.state.loading ? <div styleName="loading" /> : null}
         {this.state.error ? <div>Please provide a correct email</div> : null}
-        <form styleName="form">
+        <form styleName="form" onSubmit={this.handleSubmit}>
           <Input icon="user circle" iconPosition="left" size="big" placeholder="Your Email" type="text"
             value={this.state.email} onChange={this.handleInputEmail} />
           <Input icon="user circle" iconPosition="left" size="big" placeholder="Enter Password" type="password"
             value={this.state.password} onChange={this.handleInputPassword} />
-          <Button type="button" animated color="green" onClick={this.handleClick}>
+          <Button type="submit" animated color="green" onClick={this.handleSubmit}>
             <Button.Content visible>Login</Button.Content>
             <Button.Content hidden>
               <Icon name="right arrow" />

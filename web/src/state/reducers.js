@@ -8,7 +8,7 @@ const appReducer = combineReducers({
 });
 
 export default (state, action) => {
-  if (action.type === TYPES.RESET_ALL_USER_DATA_SUCCESS) {
+  if (action.type === TYPES.LOGOUT_USER_SUCCESS) {
     state = undefined;
   }
 
