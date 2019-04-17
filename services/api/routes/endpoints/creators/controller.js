@@ -11,8 +11,8 @@ import {
     }
   
     async creatorSpotlight(req, res) {
-      const { id } = req.params.id
-      console.log("ID", id)
+      const { id } = req.params
+      console.log("ID", id, req.params)
       const creator = await getCreatorInfo(id);
       res.send({ creator });
     }
