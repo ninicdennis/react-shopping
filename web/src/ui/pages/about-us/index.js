@@ -6,41 +6,71 @@ import css from "./index.css";
 import * as axiosWrapper from "../../../utilities/axios/wrapper";
 
 class AboutUs extends Component {
-  state = {
-    creators:""
-  }
-
   constructor(props) {
     super(props);
     this.state = {
-      creators: []
+      creators: [],
+      creator: {}
     };
   }
   componentDidMount() {
     axiosWrapper
       .get("/creators")
       .then(response => {
-        console.log("here is the homepage response", response.data.creators);
+        console.log("creators response", response.data.creators);
         this.setState({ creators: response.data.creators});
       })
       .catch(err => {
         console.log("Error");
       });
     }
-  creatorsList = () => {
-    if (this.state.creators) {
-      return this.state.creators.map((creator,i) => {
-        return <li key={i}>{creator.firstName} {creator.lastName}</li>;
-      });
+
+  fetchUserInfo = (event, userhandle, ) => {
+    event.preventDefault()
+    console.log('you clicked on', userhandle)
+    axiosWrapper
+    .get(`/creators/${userhandle}`)
+    .then(response => {
+      console.log("creators response", response);
+      this.setState({ creator: response.data.creator});
+    })
+    .catch(err => {
+      console.log("Error on picking up ID");
+    });
+  }
+
+  renderSpotlight = () => {
+    const { creator } = this.state;
+    if(creator && creator.firstName){
+      return (
+        <div>
+          <div>{creator.firstName} {creator.middleName} {creator.lastName}</div>
+          <div>Email: {creator.email}</div>
+          <div> Joined: {creator.joined}</div>
+          <div>Username: {creator.username}</div>
+        </div>
+        )
     }
-  };
+  return null
+  }
 
   render() {
     return (
-      <div>
-      <div>Here are the list of users:
-      </div>
-      {this.creatorsList()}
+      <div styleName = 'container'>
+          <aside styleName = 'leftSide'>
+                Creators:
+              <ol>
+              {this.state.creators.map((creator, index) => {
+                return <li key = {index}
+                 onClick={(event) => this.fetchUserInfo(event, creator.userHandle)}>
+                 {creator.firstName} {creator.lastName}</li>
+              })} 
+                </ol>
+          </aside>
+          <aside styleName = 'rightSide'>
+              More info:
+              {this.renderSpotlight()}
+          </aside>
       </div>
     );
   }

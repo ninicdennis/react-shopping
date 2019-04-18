@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   project-db:
-    container_name: project-db
+    container_name: project-db1
     restart: always
     environment:
       POSTGRES_USER: admin
@@ -17,7 +17,7 @@ services:
 
 
   project-api:
-    container_name: project-api
+    container_name: project-api1
     build:
       context: ./services/api
     ports:
@@ -38,7 +38,7 @@ services:
       - 'frontend-net'
 
   project-web:
-    container_name: project-web
+    container_name: project-web1
     build:
       context: ./web
     ports:
