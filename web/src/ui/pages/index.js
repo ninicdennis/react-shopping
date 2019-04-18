@@ -7,6 +7,7 @@ import css from "./index.css";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
+import AboutUs from "./about-us";
 import Landing from "./landing";
 import Home from "./homepage/";
 import Login from "./login/";
@@ -25,6 +26,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />,
             <Route  exact path="/landing" component={Landing} />
             <Route exact path="/sign-out" component={SignOut} />
+            <Route exact path='/about-us' component={AboutUs} />
           </Switch>
         </div>
         <div styleName="footer-container">
