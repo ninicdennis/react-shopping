@@ -10,7 +10,8 @@ class AboutUs extends Component {
     super(props);
     this.state = {
       creators: [],
-      creator: {}
+      creator: {},
+      updatedCreator: {},
     };
   }
   componentDidMount() {
@@ -18,7 +19,7 @@ class AboutUs extends Component {
       .get("/creators")
       .then(response => {
         console.log("creators response", response.data.creators);
-        this.setState({ creators: response.data.creators});
+        this.setState({ creators: response.data.creators, updatedCreator: response.data.creators,});
       })
       .catch(err => {
         console.log("Error");
@@ -32,7 +33,7 @@ class AboutUs extends Component {
     .get(`/creators/${userhandle}`)
     .then(response => {
       console.log("creators response", response);
-      this.setState({ creator: response.data.creator});
+      this.setState({ creator: response.data.creator, updatedCreator: response.data.creator});
     })
     .catch(err => {
       console.log("Error on picking up ID");
@@ -40,25 +41,31 @@ class AboutUs extends Component {
   }
   updateCreator = (event) => {
     event.preventDefault()
-    this.setState({ creator: event.target.value});
+    this.setState({ updatedCreator: {
+      ...this.state.creator,
+      firstName: event.target.value,
+    }});
   }  
 
+  submitCreatorUpdate = (event) => {
+    event.preventDefault()
+  }
 
   renderSpotlight = () => {
-    const { creator } = this.state;
+    const { creator, updatedCreator } = this.state;
     if(creator && creator.firstName){
       return (
         <div>
-          <div>{creator.firstName} {creator.middleName} {creator.lastName}</div>
+          <div>{updatedCreator.firstName} {updatedCreator.middleName} {creator.lastName}</div>
           <div>Email: {creator.email}</div>
-          <div> Joined: {creator.joined}</div>
+          <div>Joined: {creator.joined}</div>
           <div>Username: {creator.username}</div>
           <div>Update:</div>
 
           <form onSubmit={this.submitCreatorUpdate}>
             <input  
               type='text'
-              value={creator.firstName} 
+              value={updatedCreator.firstName} 
               placeholder='First Name' 
               onChange={this.updateCreator} />
 
