@@ -38,6 +38,11 @@ class AboutUs extends Component {
       console.log("Error on picking up ID");
     });
   }
+  updateCreator = (event) => {
+    event.preventDefault()
+    this.setState({ creator: event.target.value});
+  }  
+
 
   renderSpotlight = () => {
     const { creator } = this.state;
@@ -48,12 +53,26 @@ class AboutUs extends Component {
           <div>Email: {creator.email}</div>
           <div> Joined: {creator.joined}</div>
           <div>Username: {creator.username}</div>
+          <div>Update:</div>
+
+          <form onSubmit={this.submitCreatorUpdate}>
+            <input  
+              type='text'
+              value={creator.firstName} 
+              placeholder='First Name' 
+              onChange={this.updateCreator} />
+
+            <button 
+              type='submit' 
+              onClick={this.submitCreatorUpdate}>
+                Update Information</button>
+          </form>
         </div>
         )
     }
   return null
   }
-
+  
   render() {
     return (
       <div styleName = 'container'>

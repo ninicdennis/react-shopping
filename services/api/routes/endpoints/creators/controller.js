@@ -8,6 +8,7 @@ import {
     constructor(router) {
       router.get("/:id", wrapAsyncFunc(this.creatorSpotlight));
       router.get("/", wrapAsyncFunc(this.creatorsList));
+      router.put("/:id", wrapAsyncFunc(this.creatorRename));
     }
   
     async creatorSpotlight(req, res) {
@@ -21,5 +22,9 @@ import {
       const creators = await getCreatorsList();
       res.send({ creators });
     }
+    async creatorRename(req,res) {
+      console.log("hello from the DB ")
+      res.send({ creator: {firstName: 'blah', email: 'blah@gmail.com'}})
+      }
   }
   
