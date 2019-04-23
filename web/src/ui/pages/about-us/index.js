@@ -4,14 +4,16 @@ import CSSModules from "react-css-modules";
 import autoLogin from "../../../process/users/auth/auto-login";
 import css from "./index.css";
 import * as axiosWrapper from "../../../utilities/axios/wrapper";
+//spotlight is the render function for when you click the side.
+import Spotlight from '../../components/spotlight/index'
 
 class AboutUs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      creators: [],
-      creator: {},
-      updatedCreator: {},
+      creators: [], // base creator + userhandle
+      creator: {}, // more creator information
+      updatedCreator: {}, // 3rd one to adjust how the input tag updates
     };
   }
   componentDidMount() {
@@ -33,7 +35,10 @@ class AboutUs extends Component {
     .get(`/creators/${userhandle}`)
     .then(response => {
       console.log("creators response", response);
-      this.setState({ creator: response.data.creator, updatedCreator: response.data.creator});
+      this.setState({ 
+        creator: response.data.creator,
+        updatedCreator: response.data.creator
+      });
     })
     .catch(err => {
       console.log("Error on picking up ID");
@@ -41,45 +46,25 @@ class AboutUs extends Component {
   }
   updateCreator = (event) => {
     event.preventDefault()
-    this.setState({ updatedCreator: {
+    this.setState({
+       updatedCreator: {
       ...this.state.creator,
-      firstName: event.target.value,
+      firstName: event.target.value
     }});
   }  
 
-  submitCreatorUpdate = (event) => {
+  submitCreatorUpdate = (event, userhandle) => {
     event.preventDefault()
+    axiosWrapper
+    .put(`/creators/${userhandle}`, {creator: this.state.updatedCreator})
+    .then(response => {
+      console.log('update creator response', response)
+    })
+    .catch(err => {
+      console.log('error updating response.')
+    })
   }
 
-  renderSpotlight = () => {
-    const { creator, updatedCreator } = this.state;
-    if(creator && creator.firstName){
-      return (
-        <div>
-          <div>{updatedCreator.firstName} {updatedCreator.middleName} {creator.lastName}</div>
-          <div>Email: {creator.email}</div>
-          <div>Joined: {creator.joined}</div>
-          <div>Username: {creator.username}</div>
-          <div>Update:</div>
-
-          <form onSubmit={this.submitCreatorUpdate}>
-            <input  
-              type='text'
-              value={updatedCreator.firstName} 
-              placeholder='First Name' 
-              onChange={this.updateCreator} />
-
-            <button 
-              type='submit' 
-              onClick={this.submitCreatorUpdate}>
-                Update Information</button>
-          </form>
-        </div>
-        )
-    }
-  return null
-  }
-  
   render() {
     return (
       <div styleName = 'container'>
@@ -95,7 +80,12 @@ class AboutUs extends Component {
           </aside>
           <aside styleName = 'rightSide'>
               More info:
-              {this.renderSpotlight()}
+              <Spotlight 
+              submitCreatorUpdate = {this.submitCreatorUpdate}
+              updateCreator = {this.updateCreator}
+              creator = {this.state.creator}
+              updatedCreator={this.state.updatedCreator}
+              />
           </aside>
       </div>
     );

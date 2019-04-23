@@ -8,9 +8,17 @@ import {
     constructor(router) {
       router.get("/:id", wrapAsyncFunc(this.creatorSpotlight));
       router.get("/", wrapAsyncFunc(this.creatorsList));
-      router.put("/:id", wrapAsyncFunc(this.creatorRename));
+      router.put("/:id", wrapAsyncFunc(this.updateCreator));
     }
+
   
+    async updateCreator(req,res) {
+      const { id } = req.params;
+      const { creator } = req.body;
+      console.log ("I am responding with this: ", creator, id)
+      res.send({creator})
+    }
+
     async creatorSpotlight(req, res) {
       const { id } = req.params
       console.log("ID", id, req.params)
@@ -24,7 +32,7 @@ import {
     }
     async creatorRename(req,res) {
       console.log("hello from the DB ")
-      res.send({ creator: {firstName: 'blah', email: 'blah@gmail.com'}})
+      res.send({ creators })
       }
   }
   
