@@ -10,3 +10,4 @@ export async function getCreatorInfo(userHandle) {
 export async function getCreatorsList() {
   return fetchCreatorsDetails()
 }
+

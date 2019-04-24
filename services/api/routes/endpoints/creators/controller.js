@@ -9,14 +9,29 @@ import {
       router.get("/:id", wrapAsyncFunc(this.creatorSpotlight));
       router.get("/", wrapAsyncFunc(this.creatorsList));
       router.put("/:id", wrapAsyncFunc(this.updateCreator));
+      router.put('/:id',wrapAsyncFunc(this.creatorFoobar));
     }
-
+    async creatorFoobar(req,res) {
+      const { creator } = req.body;
+      if( creator.firstName === 'Anak') {
+        res.send('hello')
+      }
+      else console.log('failure')
+    }
   
     async updateCreator(req,res) {
       const { id } = req.params;
       const { creator } = req.body;
-      console.log ("I am responding with this: ", creator, id)
-      res.send({creator})
+      if( creator.firstName === 'Anak') {
+        console.log ("I am responding with this: ", creator, id)
+        creator.firstName = "Annie"
+        res.send({creator})
+      }
+      else { 
+        console.log ("I am responding with this: ", creator, id)
+        res.send({creator})
+    }
+
     }
 
     async creatorSpotlight(req, res) {
@@ -34,5 +49,11 @@ import {
       console.log("hello from the DB ")
       res.send({ creators })
       }
+
+    async creatorFix(req, res) {
+      const { id } = req.params
+      console.log("ID", id, req.params)
+    }
+
   }
   

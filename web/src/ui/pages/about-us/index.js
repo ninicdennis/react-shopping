@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import CSSModules from "react-css-modules";
-
 import autoLogin from "../../../process/users/auth/auto-login";
 import css from "./index.css";
 import * as axiosWrapper from "../../../utilities/axios/wrapper";
 //spotlight is the render function for when you click the side.
 import Spotlight from '../../components/spotlight/index'
+import { createPrivateKey } from "crypto";
 
 class AboutUs extends Component {
   constructor(props) {
@@ -59,6 +59,8 @@ class AboutUs extends Component {
     .put(`/creators/${userhandle}`, {creator: this.state.updatedCreator})
     .then(response => {
       console.log('update creator response', response)
+      const { creator } = response.data;
+      this.setState({ creator: creator, updateCreator: creator });
     })
     .catch(err => {
       console.log('error updating response.')

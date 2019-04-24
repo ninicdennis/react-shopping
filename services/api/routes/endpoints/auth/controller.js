@@ -40,4 +40,6 @@ export default class AuthController {
   async logout(req, res) {
     res.send({})
   }
+
 }
+
