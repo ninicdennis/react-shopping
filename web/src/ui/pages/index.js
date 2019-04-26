@@ -12,6 +12,7 @@ import Landing from "./landing";
 import Home from "./homepage/";
 import Login from "./login/";
 import SignOut from './sign-out'
+import UserSetting from './profile/settings/index'
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             <Route  exact path="/landing" component={Landing} />
             <Route exact path="/sign-out" component={SignOut} />
             <Route exact path='/about-us' component={AboutUs} />
+            <Route exact path='/profile/settings' component={UserSetting} />
           </Switch>
         </div>
         <div styleName="footer-container">

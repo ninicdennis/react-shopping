@@ -5,7 +5,6 @@ import css from "./index.css";
 import * as axiosWrapper from "../../../utilities/axios/wrapper";
 //spotlight is the render function for when you click the side.
 import Spotlight from '../../components/spotlight/index'
-import { createPrivateKey } from "crypto";
 
 class AboutUs extends Component {
   constructor(props) {

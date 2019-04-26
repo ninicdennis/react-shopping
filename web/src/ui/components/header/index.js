@@ -16,7 +16,9 @@ class Header extends Component {
     return (
       <div styleName="container">
         <Link to="/">
-          <div styleName="logo">Logo</div>
+          <div styleName="logo">
+            <h3> Bamazon </h3>
+          </div>
         </Link>
         <div styleName="active-links">{rightSide}</div>
       </div>
