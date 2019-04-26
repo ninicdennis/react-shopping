@@ -1,16 +1,17 @@
 import { wrapAsyncFunc } from "../../../utils/wrap-async-route";
-import { createItem, } from '../../commands/items';
-import { fetchItems } from '../../commands/items';
+import { createItem } from '../../commands/items';
+import { fetchItem } from '../../commands/items';
 
  export default class ItemsController{
    constructor(router) {
-      router.get('/', wrapAsyncFunc(this.fetchItems));
+      router.get('/', wrapAsyncFunc(this.sendItems));
+
       router.put("/:id", wrapAsyncFunc(this.createNewItem));
    }
 
-   async fetchItems(req, res) {
+   async sendItems(req, res) {
       console.log('fetching items')
-      let items = [{itemName:'boot', itemDesc: 'its a boot.'},{itemName:'nice boots', itemDesc: 'it is a fancier boot.'}]
+      const items = await fetchItem()
       res.send({ items })
    }
    async createNewItem(req, res) {

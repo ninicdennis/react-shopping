@@ -4,8 +4,12 @@
    height: 100%;
 }
 .leftSide {
-   flex-grow: 1;
-   border-right: 1px solid black;
+   flex-direction: collumn;
+   height: 100px;
+   width: auto;
+   margin: 10px;
+   padding: 10px; 
+   justify-content: space-between;
    }
 
  .rightSide {
