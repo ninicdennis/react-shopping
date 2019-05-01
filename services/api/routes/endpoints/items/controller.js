@@ -15,7 +15,6 @@ import { fetchItem } from '../../commands/items';
       res.send({ items })
    }
    async createNewItem(req, res) {
-      console.log('hello!')
       const { item } = req.body
       const results = await createItem(item);
       res.send({ results })
