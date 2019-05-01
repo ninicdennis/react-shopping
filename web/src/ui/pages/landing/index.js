@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CSSModules from "react-css-modules";
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 import css from "./index.css";
 import { protectedRoute } from "../../../process/users/auth";
@@ -36,7 +37,10 @@ class LandingPage extends Component {
 
   render() {
     if (this.state.error === true) {
-      return ( <div>Error! 404 Backend not found...</div>)
+      return (
+         <div>
+          <Loader />
+         </div>)
     }
     else{
         return (
@@ -66,7 +70,7 @@ export default protectedRoute(CSSModules(LandingPage, css));
   // console log a bunch of stuff out
   // use docker logs project-api
 // return whatever is given, an array of objects to be drawn on screen --done
-// business logic -- done???
+// business logic -- done
   //this is used as a switch just to change the state   
 // if ( 2%2===0) { 
     // return this

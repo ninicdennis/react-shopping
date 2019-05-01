@@ -1,0 +1,6 @@
+command to access MySQL DB
+==========================
+psql -h localhost -U admin -d project
+ -h is host location
+ -U is username
+ -d is destination
