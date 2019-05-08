@@ -1,16 +1,8 @@
 import {StatusError} from '../../utils/errors'
 import { fetchItemsFromDB } from '../repositories/items'
+import { fetchItemDetailsFromDB } from '../repositories/items'
 
 let loggedIn = true
-
-export async function createItem (item) {
-   console.log('new item created: ', item)
-   if(!item) {
-      throw new StatusError({msg:'Please provide an item', status: 400})
-   }
-
-   //call the repo :^)
-}
 
 export async function fetchItem () {
    console.log("Fetching some items")
@@ -25,3 +17,12 @@ export async function fetchItem () {
    }
    else {throw new StatusError({msg:'Please log in!', status: 400})}
 }
+
+export async function fetchItemDetails(id) {
+   //business logic//
+         const item = await fetchItemDetailsFromDB(id)
+         return item
+      }
+   
+
+
