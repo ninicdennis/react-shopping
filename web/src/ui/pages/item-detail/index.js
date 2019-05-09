@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import CSSModules from "react-css-modules";
 import css from "./index.css";
 import * as axiosWrapper from "../../../utilities/axios/wrapper";
-//spotlight is the render function for when you click the side.
 
 class ItemDetail extends Component {
    constructor(props) {
@@ -25,9 +24,7 @@ class ItemDetail extends Component {
      .catch(err => {
       console.log("Failure: ",err)
      });
-
    }
-
   render() {
      const { itemDetails } = this.state;
      console.log(this.state)
@@ -38,6 +35,7 @@ class ItemDetail extends Component {
          <p styleName = 'desctag'>Price: {itemDetails.itemPrice}</p>
          <p styleName = 'desctag'>Description: {itemDetails.itemDesc}</p>
          <p styleName = 'desctag'>Ratings: {itemDetails.ratings}</p>
+         <p styleName = 'desctag'>Seller: </p>
       </div> 
     );
   }

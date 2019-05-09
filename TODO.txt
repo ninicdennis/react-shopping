@@ -1,0 +1,23 @@
+Things to do if you are bored (or if u want to move on in life)
+===============================================================
+Profile page:
+   Being able to change user info.
+Sign up Page:
+   Be able to create users.
+Landing page:
+   Make it a log better looking, list of items.
+Admin page:
+   Be able to create a new item. Specify Seller.
+Description Page:
+   Make it better looking.
+Order History Page:
+   Shows order history for logged in user.
+   -key terms : Postgres Sorting. Many to Many, One to Many, 
+
+TODO:
+
+- Create orders seed and schema
+- General Clean up of all pages
+- Buy postgres book from Syllabus
+
+select * from users, sellers where user_handle = seller_handle :^)
