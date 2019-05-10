@@ -21,3 +21,6 @@ TODO:
 - Buy postgres book from Syllabus
 
 select * from users, sellers where user_handle = seller_handle :^)
+
+
+pulled seller handle, just need to adjust to where it pulls for a specific item. Map it to the defined sales person. So, seller_handle = item_seller_handle and so on.

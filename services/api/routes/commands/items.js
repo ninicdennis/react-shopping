@@ -1,7 +1,6 @@
 import {StatusError} from '../../utils/errors'
 import { fetchItemsFromDB } from '../repositories/items'
 import { fetchItemDetailsFromDB } from '../repositories/items'
-import {fetchSellerFromDB} from '../repositories/items'
 
 let loggedIn = true
 
@@ -24,9 +23,6 @@ export async function fetchItemDetails(id) {
          const item = await fetchItemDetailsFromDB(id)
          return item
       }
-export async function fetchSellerInfo() {
-   return await fetchSellerFromDB();
-}
    
 
 

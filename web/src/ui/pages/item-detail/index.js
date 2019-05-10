@@ -24,11 +24,16 @@ class ItemDetail extends Component {
      .catch(err => {
       console.log("Failure: ",err)
      });
+     axiosWrapper.get('/sellers')
+     .then(response => {
+       console.log('NEW BACKEND: ', response )
+     })
+     .catch(err => {
+       console.log('U MESSED UP: ',err)
+     })
    }
   render() {
      const { itemDetails } = this.state;
-     console.log(this.state)
-     console.log(this.props.match.params.id)
     return (
       <div styleName = 'left-desc'>
          <p styleName = 'maintag'>{itemDetails.itemName}</p>

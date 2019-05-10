@@ -15,9 +15,6 @@ const itemDetailMapper = row => ({
   ratings : row.ratings,
 });
 
-const SellerInformationDTO = row => ({
-  userHandle : row.user_handle,
-})
 
 export async function fetchItemsFromDB() {
   const query = sql`select * from items`;
@@ -30,10 +27,4 @@ export async function fetchItemDetailsFromDB(id) {
   const results = await PGWrapper.sqlAndMap(query, itemDetailMapper)
   return results[0];
 }
-
-export async function fetchSellerFromDB(id) {
-  const query = sql`select * from users, sellers where user_handle = seller_handle`;
-  return (await PGWrapper.sqlAndMap(query, SellerInformationDTO));
-}
-
 //set id to where user will match with item, sellerhandle = userhandle = id of item for sale. 
