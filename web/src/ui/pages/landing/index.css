@@ -1,25 +1,13 @@
-.mainBody {
-   display: flex;
-   height: 100%;
-   flex-direction: row;
-}
-.leftSide {
-   display: flex;
-   height: 150px;
-   justify-content: flex-start;
-   flex-grow: 1;
-
-   }
-
- .rightSide {
-   flex-grow : 2;
-   height: auto;
-   border: 2px solid black;
-    }
-    
  .itemBoxes {
    background-color: #474747;
    width: 120px;
+   height: 120px;
    margin:10px;
 
     }
+.innerSite {
+   display:flex;
+   flex-flow: flex-start;
+   flex-direction: row;
+   height: 100%;
+}

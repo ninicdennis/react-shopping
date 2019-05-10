@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import CSSModules from "react-css-modules";
 import css from "./index.css";
 import * as axiosWrapper from "../../../utilities/axios/wrapper";
+import { protectedRoute } from "../../../process/users/auth";
+
 
 class ItemDetail extends Component {
    constructor(props) {
@@ -25,7 +27,8 @@ class ItemDetail extends Component {
      .catch(err => {
       console.log("Error: ",err)
      });
-     axiosWrapper.get('/sellers')
+     const foobar = this.props.match.params.id
+     axiosWrapper.get(`/sellers/${foobar}`)
      .then(response => {
        console.log('Seller Information from backend: ', response )
        this.setState({sellerInfo: response.data.seller[0]})
@@ -36,19 +39,18 @@ class ItemDetail extends Component {
    }
 
   render() {
-    console.log('meme:' ,this.state)
      const { itemDetails } = this.state;
      const { sellerInfo } = this.state;
    return (
       <div styleName = 'left-desc'>
-         <p styleName = 'maintag'>{itemDetails.itemName}</p>
+         <h3 styleName = 'maintag'>{itemDetails.itemName}</h3>
          <p styleName = 'desctag'>Price: {itemDetails.itemPrice}</p>
-         <p styleName = 'desctag'>Description: {itemDetails.itemDesc}</p>
          <p styleName = 'desctag'>Ratings: {itemDetails.ratings}</p>
          <p styleName = 'desctag'>Seller: {sellerInfo.sellerUsername} </p>
+         <p styleName = 'desctag'>Description: {itemDetails.itemDesc}</p>
       </div> 
     );
   }
 }
 
-export default CSSModules(ItemDetail, css);
+export default protectedRoute(CSSModules(ItemDetail, css));

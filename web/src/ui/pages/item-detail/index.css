@@ -9,6 +9,8 @@
 }
 .maintag{
    display: flex;
+   align-content: center;
+   justify-content: center;
    flex-direction: row;
    width: auto;
    height: auto;
@@ -21,4 +23,5 @@
    width: auto;
    height: auto;
    flex-direction: row;
+   height: 20px
 }

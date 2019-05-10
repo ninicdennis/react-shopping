@@ -19,7 +19,6 @@ export async function fetchItem () {
 }
 
 export async function fetchItemDetails(id) {
-   //business logic//
          const item = await fetchItemDetailsFromDB(id)
          return item
       }

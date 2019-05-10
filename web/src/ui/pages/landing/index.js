@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import CSSModules from "react-css-modules";
-import { Loader } from 'semantic-ui-react'
-
 import {Link} from 'react-router-dom'
 
 import css from "./index.css";
@@ -33,9 +31,9 @@ class LandingPage extends Component {
   render(){
     const { items } = this.state;
      return (
-      <div>
+      <div styleName = 'innerSite'>
         {items.map((item, index) => (
-          <div key = {index}>
+          <div styleName = 'itemBoxes' key = {index}>
           <Link to={`/items/${item.itemHandle}`}>{item.itemName}</Link>
           </div>
         ))}
