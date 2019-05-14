@@ -16,7 +16,7 @@ import {
       const { creator } = req.body;
       if( creator.firstName === 'Anak') {
         console.log ("I am responding with this: ", creator, id)
-        creator.firstName = "Annie"
+        creator.firstName = "Pupperbot"
         res.send({creator})
       }
       else { 

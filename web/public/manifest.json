@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Bamazon",
+  "name": "Bamazon, we sell stuff.",
   "icons": [
     {
       "src": "favicon.ico",

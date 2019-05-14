@@ -14,6 +14,7 @@ import Login from "./login/";
 import SignOut from './sign-out'
 import UserSetting from './profile/settings/index'
 import ItemDetail from "./item-detail";
+import ProfilePage from './profile/index'
 
 class App extends Component {
   render() {
@@ -26,11 +27,12 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />,
             <Route exact path="/login" component={Login} />,
-            <Route  exact path="/landing" component={Landing} />
+            <Route exact path="/landing" component={Landing} />
             <Route exact path="/sign-out" component={SignOut} />
             <Route exact path='/about-us' component={AboutUs} />
             <Route exact path='/profile/settings' component={UserSetting} />
             <Route exact path='/items/:id' component={ItemDetail} />
+            <Route exact path='/profile' component={ProfilePage} />
           </Switch>
         </div>
         <div styleName="footer-container">

@@ -27,3 +27,13 @@ pulled seller handle, just need to adjust to where it pulls for a specific item.
 
 
 Item handle is attached to seller handle, to match specifically for one seller.
+
+
+Create a seperate table that houses the seller information + item information in order to create a list of orders for each individual logged in.
+This way we can pull certain information that shows up on the order history tab.
+
+order, item, sale time, quantity, seller, etc. 
+
+pass user id into command, repo, and endpoint.
+
+select * from item_seller_order where user_handle = :id
