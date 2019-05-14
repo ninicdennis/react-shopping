@@ -23,7 +23,7 @@ class LandingPage extends Component {
       this.setState({items: response.data.items, error: false })
     })
     .catch(err => {
-      console.log('Error Fetching Items.')
+      console.log('Error Fetching Items.', err)
       this.setState({error: true })
     });
   }
@@ -33,9 +33,9 @@ class LandingPage extends Component {
      return (
       <div styleName = 'innerSite'>
         {items.map((item, index) => (
-          <div styleName = 'itemBoxes' key = {index}>
-          <Link to={`/items/${item.itemHandle}`}>{item.itemName}</Link>
-          </div>
+          <Link styleName = 'itemBoxes' to={`/items/${item.itemHandle}`} key = {index}>
+          <div>{item.itemName}</div>
+          </Link>
         ))}
       </div>
       )

@@ -1,8 +1,10 @@
  .itemBoxes {
-   background-color: #474747;
+   background-color: #777777;
    width: 120px;
    height: 120px;
    margin:10px;
+   color: black;
+   border:black 2px solid;
 
     }
 .innerSite {
@@ -10,4 +12,6 @@
    flex-flow: flex-start;
    flex-direction: row;
    height: 100%;
+   
 }
+

@@ -44,10 +44,13 @@ class ItemDetail extends Component {
    return (
       <div styleName = 'left-desc'>
          <h3 styleName = 'maintag'>{itemDetails.itemName}</h3>
-         <p styleName = 'desctag'>Price: {itemDetails.itemPrice}</p>
-         <p styleName = 'desctag'>Ratings: {itemDetails.ratings}</p>
-         <p styleName = 'desctag'>Seller: {sellerInfo.sellerUsername} </p>
-         <p styleName = 'desctag'>Description: {itemDetails.itemDesc}</p>
+         <div styleName = 'imagePlaceholder'>IMAGE GOES HERE</div>
+         <div styleName = 'desctag'>
+         <p>Price: {itemDetails.itemPrice}</p>
+         <p>Ratings: {itemDetails.ratings}</p>
+         <p>Seller: {sellerInfo.sellerUsername}</p>
+         </div>
+         <p styleName = 'desctagRight'>Description: {itemDetails.itemDesc}</p>
       </div> 
     );
   }
