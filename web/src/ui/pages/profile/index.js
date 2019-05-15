@@ -7,22 +7,24 @@ import * as axiosWrapper from "../../../utilities/axios/wrapper";
 import css from './index.css'
 
 class ProfilePage extends Component {
-   // constructor(props){
-   //    super(props);
-   //    this.state = {
-   //       userName: ''
-   //    }
-   // }
+   constructor(props){
+      super(props);
+      this.state = {
+         orders : {}
+      }
+   }
 
-   // componentDidMount() {
-   //    axiosWrapper.get("/users")
-   //    .then(response =>{
-   //       console.log(response.data)
-   //    })
-   //    .catch(err => {
-   //       console.log(err)
-   //    })
-   // }
+   componentDidMount() {
+      axiosWrapper.get("/orders")
+      .then(response =>{
+         console.log('response Order: ',response.data)
+         this.setState({orders : response.data})
+         console.log(this.state.orders)
+      })
+      .catch(err => {
+         console.log('Error: ',err)
+      })
+   }
   render() {
      let user = 'Pupperbot'  //placeholder for login on backend
    return (
