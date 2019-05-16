@@ -2,7 +2,7 @@ import sql from "sql-template-strings"
 import PGWrapper from "../../utils/pg-wrapper"
 
 const OrderMap = row => ({
-   orderItem : row.order_item,
+   orderItem : row.item_name,
    orderDate : row.order_date,
    orderSeller : row.seller_name,
    orderNumber : row.order_number,

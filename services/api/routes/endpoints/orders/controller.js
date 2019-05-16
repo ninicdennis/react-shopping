@@ -8,7 +8,7 @@ constructor(router) {
 async sendOrder(req, res) {
    console.log('getting order')
    const orders = await fetchOrder()
-   res.send( orders[0] ) // figure out why this is always saves an array.
+   res.send({ orders } ) // figure out why this is always saves an array.
 }
 
 }
