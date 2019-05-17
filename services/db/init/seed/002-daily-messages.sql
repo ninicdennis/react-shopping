@@ -6,4 +6,5 @@ insert into daily_messages (id, daily_message) values
     (5, 'Who even knows.'),
     (6, 'Is class almost over'),
     (7, 'We should grab some food after')
+    (8, 'Pupperbot Hacked the Backend :^)')
 on conflict do nothing;
