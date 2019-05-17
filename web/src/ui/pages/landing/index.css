@@ -1,3 +1,4 @@
+
  .itemBoxes {
    background-color: #777777;
    width: 120px;
@@ -5,7 +6,12 @@
    margin:10px;
    color: black;
    border:black 2px solid;
+   
 
+    }
+    a:hover
+    {
+       background-color: #808080;
     }
 .innerSite {
    display:flex;

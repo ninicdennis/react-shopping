@@ -19,44 +19,47 @@ class ProfilePage extends Component {
       }
    }
 
+   // To get the userID for specific logged in person
+   // this.props.user.active
+
    componentDidMount() {
       axiosWrapper.get("/orders")
       .then(response =>{
          console.log('response Order: ',response.data)
          this.setState({orders : response.data.orders})
          console.log('Absolte state' ,this.state)
+         console.log('res.state to get ID', this.props.user.active.userHandle)
       })
       .catch(err => {
          console.log('Error: ',err)
       })
    }
   render() {
-     let user = 'Pupperbot'  //placeholder for login on backend
      let { orders } = this.state;
+     let  current_user  = this.props.user.active
    return (
       <div>
-         <div styleName = 'top'>Hello, {user}</div>
+         <div styleName = 'top'>Hello, {current_user.firstName} {current_user.lastName}</div>
          <div styleName = 'top'>Recent Purchases:</div>
-         <div styleName = 'orderTab'>
-            <p>Item</p> {console.log(orders)}
-            <p>Date Ordered</p>
-            <p>Item Seller</p>
-            <p>Order Number</p>
-            <p>Price</p>
-         </div>
- 
           <div>
+          <table styleName = 'orderTab'>
+             <tr styleName = 'tableRow'>
+               <th styleName = 'tableHead2'>Item</th>
+               <th styleName = 'tableHead2'>Item Ordered</th>
+               <th styleName = 'tableHead2'>Item Seller</th>
+               <th styleName = 'tableHead2'> Order Number</th>
+               <th styleName = 'tableHead2'>Price</th>
+            </tr>
+
              {orders.map((order, index) => (
-                <div key = {index}>
-                <p styleName = 'orderTab2'>
-                <div>{order.orderItem}</div>
-                <div>{order.orderDate}</div>
-                <div>{order.orderSeller}</div>
-                <div>{order.orderNumber}</div>
-                <div>{order.orderPrice}</div>
-                  </p>
-                </div>
-                ))}
+                <tr key = {index} styleName = 'tableRow'>
+                   <th styleName = 'tableHead'>{order.orderItem}</th>
+                   <th styleName = 'tableHead'>{order.orderDate}</th>
+                   <th styleName = 'tableHead'>{order.orderSeller}</th>
+                   <th styleName = 'tableHead'>{order.orderNumber}</th>
+                   <th styleName = 'tableHead'>{order.orderPrice}</th>
+                </tr>))}
+              </table>
           </div>
       </div>
       )

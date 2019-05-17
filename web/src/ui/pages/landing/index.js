@@ -16,8 +16,7 @@ class LandingPage extends Component {
     };
   }
   componentDidMount() {
-    axiosWrapper
-    .get('/items')
+    axiosWrapper.get('/items')
     .then(response => {
       console.log(' response from items: ', response.data.items);
       this.setState({items: response.data.items, error: false })
