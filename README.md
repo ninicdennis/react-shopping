@@ -1,7 +1,11 @@
-# project-starter
-This is an example of how to setup your project
+# project-pupper-shopping
+This is a project for Helio Traning, a coding bootcamp I am currently attending. This project is a blank boilerplate that was given from the instructer and we were told to build upon. This is my current build.
+# To Start
+chmod +x ./stop
 
+chmod +x ./start
 
-To use it ```cd``` to the folder where you cloned it down
-run ```docker-compose up -d --build```
-go to ```localhost:3000```
+chmod +x ./postgresql
+
+These will give you the ability to start and stop the 3 docker containers, with one simple script file. You can even access the 
+database if needed.
