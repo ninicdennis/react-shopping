@@ -38,4 +38,24 @@ pass user id into command, repo, and endpoint.
 
 select * from item_seller_order where user_handle = :id
 
+
+=== FOR NEXT WEEK ===
+insert ID into your axios wrapper
+
+look under specific ID from DB, SELECT * FROM orders WHERE purchase_handle = ${id};
+
+return order information from that backend promise that is specific to the user.
+
+That should be your order page fully finished and ready.
+
+PROFILE PAGE
+=============
+Be able to update user settings VIA form, set placeholder as default value.
+
+this will be using a .post, as we are updating large chunks of data this time.
+
+this can be tied in with the user settings, but im a lazy fuck and already made
+the page so its staying under settings. WEW
+
+
 -{+_+}-

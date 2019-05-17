@@ -27,8 +27,15 @@ class Homepage extends Component {
     const { messageOfTheDay } = this.state;
 
     return (
-      <div styleName="homepage-container">
-        <div styleName="daily-message">{messageOfTheDay}</div>
+      <div styleName = 'centerStage'>
+        <div styleName = 'leftBox'>
+          {messageOfTheDay}
+        </div>
+        <div styleName = 'rightBox'>
+            <h3>WELCOME TO BAMAZON</h3>
+        
+        </div>
+
       </div>
     );
   }

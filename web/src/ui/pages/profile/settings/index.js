@@ -15,6 +15,7 @@ class UserSetting extends Component {
             <div />
             Password: 
             <input type = 'text' placeholder = 'password' />
+            <input type = 'text' placeholder = 'first name' />
             
          </div>
       </div>

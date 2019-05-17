@@ -1,3 +1,35 @@
 .homepage-container {}
 
 .daily-message {}
+
+.leftBox {
+   display: flex;
+   justify-items: center;
+   align-content: center;
+   justify-content: center;
+   align-items: center;
+   height: 80%;
+   width: 45%;
+   background-color: #474747;
+
+
+}
+.rightBox {
+   display: flex;
+   justify-items: center;
+   align-content: center;
+   justify-content: center;
+   align-items: center;
+   height: 80%;
+   width: 45%;
+   background-color: #474747;
+
+}
+
+.centerStage {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   flex-direction: row;
+   height: 100%;
+}
