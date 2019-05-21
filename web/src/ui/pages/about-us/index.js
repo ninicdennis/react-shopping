@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import CSSModules from "react-css-modules";
 import autoLogin from "../../../process/users/auth/auto-login";
@@ -5,6 +6,7 @@ import css from "./index.css";
 import * as axiosWrapper from "../../../utilities/axios/wrapper";
 //spotlight is the render function for when you click the side.
 import Spotlight from '../../components/spotlight/index'
+import ReMap from './reMap/index'
 
 class AboutUs extends Component {
   constructor(props) {
@@ -69,15 +71,11 @@ class AboutUs extends Component {
   render() {
     return (
       <div styleName = 'container'>
-          <aside styleName = 'leftSide'>
-                Creators:
-              <ol>
-              {this.state.creators.map((creator, index) => {
-                return <li key = {index}
-                 onClick={(event) => this.fetchUserInfo(event, creator.userHandle)}>
-                 {creator.firstName} {creator.lastName}</li>
-              })} 
-                </ol>
+        <aside styleName = 'leftSide'>
+          Creators:
+            <ReMap creators= {this.state.creators} >
+                
+           </ReMap>
           </aside>
           <aside styleName = 'rightSide'>
               More info:

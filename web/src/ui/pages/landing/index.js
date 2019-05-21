@@ -29,6 +29,8 @@ class LandingPage extends Component {
 
   render(){
     const { items } = this.state;
+    if (this.state.error)
+      return <div>Loading...</div>
      return (
       <div styleName = 'innerSite'>
         {items.map((item, index) => (

@@ -6,19 +6,18 @@ import css from './index.css'
 class UserSetting extends Component {
   render() {
    return (
-      <div>
-         Hello! This is the Settings Page, a page where you can adjust user information!
-         <div>
-
-            Username: 
-            <input type = 'text' placeholder = 'username'/>
-            <div />
-            Password: 
-            <input type = 'text' placeholder = 'password' />
-            <input type = 'text' placeholder = 'first name' />
+      <div styleName = 'container'>
+         Adjust your information:
+         <div styleName = 'textField'>
+            <form>
+            <input  type= 'text' placeholder = 'First Name' input_id = '' />
+            <input  type = 'text' placeholder = 'Last Name' value = '' />
+            <button>Submit </button>
+            </form>
             
          </div>
       </div>
+      
    )
   }
 }
