@@ -4,6 +4,8 @@ import css from "./index.css";
 import * as axiosWrapper from "../../../utilities/axios/wrapper";
 import { protectedRoute } from "../../../process/users/auth";
 
+import { Image, Container, Header, Label } from 'semantic-ui-react'
+
 
 class ItemDetail extends Component {
    constructor(props) {
@@ -44,13 +46,20 @@ class ItemDetail extends Component {
    return (
       <div styleName = 'left-desc'>
          <h3 styleName = 'maintag'>{itemDetails.itemName}</h3>
-         <div styleName = 'imagePlaceholder'>IMAGE GOES HERE</div>
+         <Image 
+         src='https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fthumbs.dreamstime.com%2Fz%2Fmale-left-foot-brown-shoe-takes-step-isolated-white-background-65135996.jpg&f=1'
+         size='medium' />
+         
          <div styleName = 'desctag'>
-         <p>Price: {itemDetails.itemPrice}</p>
-         <p>Ratings: {itemDetails.ratings}</p>
-         <p>Seller: {sellerInfo.sellerUsername}</p>
+           <Label>Price: {itemDetails.itemPrice}</Label>
+           <Label>Ratings: {itemDetails.itemPrice}</Label>
+           <Label>Seller: {sellerInfo.sellerUsername}</Label>
          </div>
-         <p styleName = 'desctagRight'>Description: {itemDetails.itemDesc}</p>
+        <Container text>
+          <Header as='h2'>Description: </Header>
+          <p>{itemDetails.itemDesc}</p>
+          </Container>
+
       </div> 
     );
   }

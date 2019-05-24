@@ -1,11 +1,11 @@
 create table if not exists orders
 (
 
-   purchase_handle uuid references users(user_handle),
+   purchase_handle uuid primary key,
    item_name text not null,
    order_date text not null,
    seller_name text not null,
-   order_number text primary key not null,
+   order_number text not null,
    item_price text not null
 
 );

@@ -20,8 +20,6 @@ class Header extends Component {
             <h3> Bamazon </h3>
           </div>
         </Link>
-
-        <Link styleName = "LinkColor" to="/about-us">About Us</Link>
         <div styleName="active-links">{rightSide}</div>
       </div>
     );

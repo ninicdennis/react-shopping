@@ -67,3 +67,8 @@ its a mess , gross.
 Refer to how he set it up on teams. Should give you some insite on how this should even work.
 
 -{+_+}-
+
+Weird dangling issue with docker, here is the fix: 
+
+docker volume rm $(docker volume ls -qf dangling=true)
+
