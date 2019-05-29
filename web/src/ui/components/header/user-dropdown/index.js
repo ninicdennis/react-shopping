@@ -35,6 +35,7 @@ class HeaderNavLinks extends Component {
     );
 
     return [
+      <div> Cart: {this.props.cartCount}
       <Dropdown
         key="user-dropdown"
         trigger={trigger}
@@ -42,6 +43,7 @@ class HeaderNavLinks extends Component {
         pointing="top right"
         icon={null}
       />
+      </div>
     ];
   }
 }

@@ -17,11 +17,26 @@ import ItemDetail from "./item-detail";
 import ProfilePage from './profile/index'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      updateCartItem: {},
+      cartCount: 0
+    }
+  }
+
+  updateCart = (event) => {
+    event.preventDefault();
+    this.setState({cartCount : cartCount + 1})
+
+  }
+  // This is where the good or bad path. 
+
   render() {
     return (
       <div styleName="App">
         <div styleName="header-container">
-          <Header />
+          <Header cartCount = {this.state.cartCount} />
         </div>
         <div styleName="content-container">
           <Switch>
@@ -31,7 +46,8 @@ class App extends Component {
             <Route exact path="/sign-out" component={SignOut} />
             <Route exact path='/about-us' component={AboutUs} />
             <Route exact path='/profile/settings' component={UserSetting} />
-            <Route exact path='/items/:id' component={ItemDetail} />
+            {/* <Route exact path='/items/:id' component={ItemDetail} /> */}
+            <Route exact path = '/items/:id' render={({match}) => <ItemDetail match = {match} cartCount = {this.state.cartCount}/>} />
             <Route exact path='/profile' component={ProfilePage} />
           </Switch>
         </div>

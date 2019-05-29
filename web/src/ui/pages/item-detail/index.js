@@ -12,7 +12,9 @@ class ItemDetail extends Component {
       super(props);
       this.state = {
          itemDetails : {},
-         sellerInfo : {}
+         sellerInfo : {},
+         itemPurchase : {}, 
+         cartSize : 0,
          //itemName
          //itemDesc
          //itemPrice
@@ -25,6 +27,7 @@ class ItemDetail extends Component {
      .then(response => {
        console.log("Item Information from backend. ", response)
        this.setState({itemDetails : response.data.item})
+
      })
      .catch(err => {
       console.log("Error: ",err)
@@ -40,7 +43,16 @@ class ItemDetail extends Component {
      })
    }
 
+  addItemToCart = (event) => {
+    event.preventDefault();
+    // this.setState({itemPurchase :  this.state.itemHandle })
+    // console.log("added " , this.state.itemDetails.itemHandle)
+    this.setState({cartSize : this.state.cartSize + 1})
+    console.log("Added", this.state.cartSize + 1 , "item")
+  }
+
   render() {
+    console.log(this.props)
      const { itemDetails } = this.state;
      const { sellerInfo } = this.state;
    return (
@@ -59,6 +71,10 @@ class ItemDetail extends Component {
           <Header as='h2'>Description: </Header>
           <p>{itemDetails.itemDesc}</p>
           </Container>
+
+          <button styleName = 'pressme' onClick = {this.addItemToCart}>
+            Add to cart! {this.state.cartSize}
+          </button>
 
       </div> 
     );
