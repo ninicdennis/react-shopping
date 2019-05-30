@@ -44,15 +44,18 @@ class ItemDetail extends Component {
    }
 
   addItemToCart = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     // this.setState({itemPurchase :  this.state.itemHandle })
     // console.log("added " , this.state.itemDetails.itemHandle)
     this.setState({cartSize : this.state.cartSize + 1})
     console.log("Added", this.state.cartSize + 1 , "item")
+    this.props.cartCount()
+    
+    
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.cartCount)
      const { itemDetails } = this.state;
      const { sellerInfo } = this.state;
    return (
@@ -75,7 +78,6 @@ class ItemDetail extends Component {
           <button styleName = 'pressme' onClick = {this.addItemToCart}>
             Add to cart! {this.state.cartSize}
           </button>
-
       </div> 
     );
   }
