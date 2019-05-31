@@ -10,6 +10,6 @@ const OrderMap = row => ({
 })
 
 export async function fetchCartDB() {
-   const query = sql `select * from cart`;  // you can put an ID to pull everyone, TODO
+   const query = sql `select * from cart`; 
    return (await PGWrapper.sqlAndMap(query,OrderMap));
 }

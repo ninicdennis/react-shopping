@@ -8,9 +8,8 @@ export default class AuthController {
    }
 
    async fetchCartInfo(req,res) {
-      const { id } = req.params;
       const { creator  } = await fetchCart();
-      res.send({creator});
+      res.send({ creator });
    }
 
 }

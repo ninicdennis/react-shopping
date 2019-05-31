@@ -27,11 +27,11 @@ class App extends Component {
 
   componentDidMount() {
     axiosWrapper.get('/cart')
-      .then((response) => {
+      .then(response => {
         console.log("Response from cart items: ", response)
         this.setState({cartCount : response.data}) // this will be number of items in cart, quantity
       })
-      .catch((err) => {
+      .catch(err => {
         console.log("Error: ", err)
       })
   }
