@@ -35,7 +35,7 @@ class LandingPage extends Component {
       <div styleName = 'innerSite'>
         {items.map((item, index) => (
           <Link styleName = 'itemBoxes' to={`/items/${item.itemHandle}`} key = {index}>
-          <div>{item.itemName}</div>
+          <div key = {index}>{item.itemName}</div>
           </Link>
         ))}
       </div>

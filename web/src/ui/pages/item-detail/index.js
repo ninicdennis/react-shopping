@@ -43,13 +43,11 @@ class ItemDetail extends Component {
      })
    }
 
-  addItemToCart = (event) => {
+  addItemToCart = () => {
     event.preventDefault()
-    // this.setState({itemPurchase :  this.state.itemHandle })
-    // console.log("added " , this.state.itemDetails.itemHandle)
     this.setState({cartSize : this.state.cartSize + 1})
     console.log("Added", this.state.cartSize + 1 , "item")
-    this.props.cartCount()
+    this.props.cartCount(this.state.itemDetails.itemHandle, this.state.cartSize)
     
     
   }

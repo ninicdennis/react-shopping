@@ -5,7 +5,7 @@ create table
    item_handle uuid references items(item_handle),
    active boolean not null default true, 
    quantity numeric not null default 1,  
-   primary key ( user_handle, item_handle, active)
+   primary key ( user_handle, item_handle)
 );
 
 grant select, insert, update, delete on table cart to project_app;

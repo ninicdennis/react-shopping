@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import CSSModules from "react-css-modules";
-import axiosWrapper from "../../utilities/axios/wrapper"
+import * as axiosWrapper from "../../utilities/axios/wrapper"
 
 import css from "./index.css";
 import Header from "../components/header";
@@ -16,33 +16,44 @@ import SignOut from './sign-out'
 import UserSetting from './profile/settings/index'
 import ItemDetail from "./item-detail";
 import ProfilePage from './profile/index'
+import CartCart from './cart'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      cartCount: 0
+      cartCount: 1
     }
   }
 
   componentDidMount() {
     axiosWrapper.get('/cart')
       .then(response => {
-        console.log("Response from cart items: ", response)
-        this.setState({cartCount : response.data}) // this will be number of items in cart, quantity
+        console.log("Response from cart items: ", response.data.cart.quantity)
+        this.setState({cartCount : response.data.cart.quantity}) // this will be number of items in cart, quantity
       })
       .catch(err => {
         console.log("Error: ", err)
       })
   }
 
-  updateCart = () => {
-    console.log("UPDATING IN APP.JS")
-    this.setState({cartCount : this.state.cartCount + 1})
+  updateCart = (itemID, quantity) => {
+    console.log("added quantity, item handle :", quantity, itemID)
+    this.setState({cartCount : parseInt(this.state.cartCount) + 1 })
+    // Above was for artificial count
+    axiosWrapper.post('/cart/add', {items: [{id: itemID, quantity }]})
+    .then(res => {
+        console.log("Backend Response for cart..........", res)
+        this.setState ({cartCount : parseInt(this.state.cartCount) + 1})
+    })
+    .catch((err) => {
+      console.log("Something has broken.............", err)
+    })
+
 
   }
-
   render() {
+
     return (
       <div styleName="App">
         <div styleName="header-container">
@@ -56,8 +67,7 @@ class App extends Component {
             <Route exact path="/sign-out" component={SignOut} />
             <Route exact path='/about-us' component={AboutUs} />
             <Route exact path='/profile/settings' component={UserSetting} />
-            <Route exact path='/cart' render ={() => <div>This should be the Cart</div>} />
-            {/* <Route exact path='/items/:id' component={ItemDetail} /> */}
+            <Route exact path='/cart' render ={() => <CartCart />} />
             <Route exact path = '/items/:id' render={({match}) => <ItemDetail match = {match} cartCount={this.updateCart}/>} />
             <Route exact path='/profile' component={ProfilePage} />
           </Switch>
