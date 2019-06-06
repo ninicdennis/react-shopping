@@ -12,7 +12,7 @@ class AboutUs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      creators: [], // base creator + userhandle
+      creators: [], // base creator + userhandle wow
       creator: {}, // more creator information
       updatedCreator: {}, // 3rd one to adjust how the input tag updates
     };
