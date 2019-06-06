@@ -19,7 +19,8 @@ export default class AuthController {
    async addCartItem(req,res) {
       const {userHandle} = req.user
       const {items} = req.body
-      console.log("hello!")
+      console.log("hello!.........", req.user)
+      console.log("Req.Body.........", req.body)
       const results = await addItemToCart(userHandle, items);
       res.send({cart: results})
    }

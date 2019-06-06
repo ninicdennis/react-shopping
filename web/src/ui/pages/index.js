@@ -22,7 +22,9 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      cartCount: 1
+      cartCount: 1,
+      cartInv: []
+
     }
   }
 
@@ -30,7 +32,8 @@ class App extends Component {
     axiosWrapper.get('/cart')
       .then(response => {
         console.log("Response from cart items: ", response.data.cart.quantity)
-        this.setState({cartCount : response.data.cart.quantity}) // this will be number of items in cart, quantity
+        this.setState({cartCount : response.data.cart.quantity, cartInv : response.data}) // this will be number of items in cart, quantity
+        console.log('Cart..........' , response.data)
       })
       .catch(err => {
         console.log("Error: ", err)
@@ -38,16 +41,13 @@ class App extends Component {
   }
 
   updateCart = (itemID, quantity) => {
-    console.log("added quantity, item handle :", quantity, itemID)
-    this.setState({cartCount : parseInt(this.state.cartCount) + 1 })
-    // Above was for artificial count
     axiosWrapper.post('/cart/add', {items: [{id: itemID, quantity }]})
     .then(res => {
         console.log("Backend Response for cart..........", res)
         this.setState ({cartCount : parseInt(this.state.cartCount) + 1})
     })
     .catch((err) => {
-      console.log("Something has broken.............", err)
+      console.log("Something has broken..........", err)
     })
 
 
