@@ -68,6 +68,33 @@ class PGWrapper {
       this.logError(errParams)
     }
   }
+  async sqlTransaction(...statements) {
+    const pool = new Pool({
+    connectionString: process.env.DATABASE_URL
+    });
+    return (async () => {
+    // note: we don't try/catch this because if connecting throws an exception
+    // we don't need to dispose of the client (it will be undefined)
+    const client = await pool.connect();
+    try {
+    let results;
+    statements.map(async (statement, index) => {
+    try {
+    results = await client.query(statement.text, statement.values);
+    } catch (e) {
+    console.log("Your statment has an error in it", e);
+    }
+    });
+    await client.query("COMMIT");
+    return results;
+    } catch (e) {
+    await client.query("ROLLBACK");
+    throw e;
+    } finally {
+    client.release();
+    }
+    })().catch(e => console.error(e.stack));
+    }
 
   async sqlAndMap(statement, mapper) {
     this._pgQueue.push(true)
